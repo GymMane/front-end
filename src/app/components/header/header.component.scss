@@ -1,0 +1,54 @@
+@import "variables.scss";
+@import "mixins.scss";
+
+.header-wrapper {
+  background: $main-color;
+
+  .logo {
+    height: 30px;
+    width: 30px;
+  }
+
+  .menu-icon-wrapper {
+    border: 1px solid $white-color;
+
+    &:focus,
+    &:active {
+      outline: none;
+    }
+
+    .menu-icon {
+      color: $white-color;
+    }
+  }
+
+  .collapse-wrapper {
+    .navbar-nav {
+      .nav-item {
+
+        &.active {
+          .nav-link {
+            border-bottom: 1px solid $white-color;
+          }
+        }
+
+        .nav-link {
+          color: $white-color;
+          display: inline-flex;
+          padding-left: 0;
+          padding-right: 0;
+          margin-left: 10px;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+
+  .initial-wrppaer {
+    height: 40px;
+    width: 40px;
+    background: $white-color;
+    border-radius: 50%;
+    color: $black-color;
+  }
+}

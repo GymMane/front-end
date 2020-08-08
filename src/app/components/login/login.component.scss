@@ -1,0 +1,69 @@
+@import "variables.scss";
+@import "mixins.scss";
+
+@mixin login-register-box {
+  @include mat-input-colors;
+
+  .header {
+    color: $main-color;
+    display: block;
+    font-size: 30px;
+    line-height: 1.2;
+  }
+
+  .logo {
+    height: 100px;
+    width: 100px;
+    margin: 0 auto;
+  }
+
+  .login-register-link {
+    font-size: 12px;
+    line-height: 1.5;
+    padding-top: 60px;
+
+    .link-text {
+      color: $main-color;
+      border-bottom: 1px solid $main-color;
+    }
+  }
+}
+
+.login-wrapper {
+  margin: 0 auto;
+
+  .login-container {
+    min-height: 100vh;
+    flex-wrap: wrap;
+    padding: 15px;
+    background: #f2f2f2;
+
+    .login-box {
+      width: 390px;
+      background: $white-color;
+      border-radius: 10px;
+      overflow: hidden;
+      padding: 77px 55px 33px 55px;
+
+      box-shadow: $box-shadow;
+      -moz-box-shadow: $box-shadow;
+      -webkit-box-shadow: $box-shadow;
+      -o-box-shadow: $box-shadow;
+      -ms-box-shadow: $box-shadow;
+
+      .login-form {
+        @include login-register-box;
+      }
+
+      .register-form {
+        @include login-register-box;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .login-box {
+    padding: 77px 15px 33px 15px;
+  }
+}

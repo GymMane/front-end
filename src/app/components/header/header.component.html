@@ -1,0 +1,27 @@
+<nav class="header-wrapper navbar navbar-expand-lg navbar-light">
+  <a class="navbar-brand" href="#">
+    <div class="logo">
+      <img src="assets/images/logo.png" class="h-100 w-100" alt="logo" />
+    </div>
+  </a>
+  <button class="navbar-toggler menu-icon-wrapper" type="button" data-toggle="collapse"
+    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+    aria-label="Toggle navigation">
+    <span class="material-icons menu-icon">
+      menu
+    </span>
+  </button>
+
+  <div class="collapse navbar-collapse collapse-wrapper" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" [ngClass]="{'active' : navIndex === index}" *ngFor="let nav of navList;let index = index;"
+        (click)="navIndex = index">
+        <span class="nav-link cursor-pointer">{{nav}}</span>
+    </ul>
+    <div class="my-2 my-lg-0">
+      <div class="initial-wrppaer flex-display vertical-center font-weight-bold cursor-pointer">
+        <span class="initial">R</span>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,1 +1,92 @@
-/* You can add global styles to this file, and also import other style files */
+//External imports
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import "https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Rounded";
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "mixins.scss";
+
+//Initial style
+*,
+body {
+  outline: none;
+  font-family: 'Lato', sans-serif;
+  color: $default-color;
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
+}
+
+//End
+
+//Global scroll bar styling
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #888888 #c9c9c9;
+
+  &::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #c9c9c9;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #888888;
+    border-radius: 20px;
+    border: 3px solid #c9c9c9;
+
+    &:hover {
+      background: #707070;
+
+    }
+  }
+}
+
+//End
+
+
+//Display flex layout
+.flex-display {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+//End
+
+//Vertical align center
+.vertical-center {
+  justify-content: center;
+  align-items: center;
+}
+
+//End
+
+//standard button 
+.standard-btn {
+  @include main-color-background;
+  height: 50px;
+  width: 100%;
+  border-radius: 50px 0px 50px 50px;
+  margin-top: 20px;
+  border: none;
+  color: #ffffff;
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
+}
+
+//End
+
+//Hand pointer of mouse
+.cursor-pointer {
+  cursor: pointer;
+}
+
+//End

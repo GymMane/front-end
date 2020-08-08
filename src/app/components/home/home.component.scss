@@ -1,0 +1,30 @@
+@import "variables.scss";
+
+.home-wrapper {
+  padding: 15px;
+
+  .stock-status-table {
+    border: 1px solid rgba(0, 0, 0, .12);
+
+    .table-header {
+      background: $table-header-color;
+
+      th {
+        font-weight: 600;
+      }
+
+    }
+
+    .stock-status-row {
+      background: $table-row-success-color;
+
+      &.danger {
+        background: $table-row-danger-color;
+      }
+
+      &.normal {
+        background: $table-row-normal-color;
+      }
+    }
+  }
+}

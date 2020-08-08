@@ -1,0 +1,84 @@
+<div class="login-wrapper w-100">
+  <div class="login-container w-100 flex-display vertical-center text-center">
+    <div class="login-box">
+      <form class="login-form w-100" *ngIf="showLogin">
+        <span class="header font-weight-bold">
+          LOGIN
+        </span>
+
+        <div class="logo">
+          <img src="assets/images/logo.png" class="h-100 w-100" alt="logo" />
+        </div>
+
+        <mat-form-field class="w-100">
+          <mat-label>Username</mat-label>
+          <input matInput />
+        </mat-form-field>
+
+        <mat-form-field class="w-100">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" />
+        </mat-form-field>
+
+        <button type="button" class="standard-btn" (click)="loginUser()">LOGIN</button>
+
+        <div class="login-register-link">
+          <span>
+            Don’t have an account?
+          </span>
+
+          <span class="link-text cursor-pointer font-weight-bold" (click)="showLogin = !showLogin">
+            REGISTER
+          </span>
+        </div>
+      </form>
+
+      <form class="register-form" *ngIf="!showLogin">
+        <span class="header font-weight-bold">
+          REGISTER
+        </span>
+
+        <div class="logo">
+          <img src="assets/images/logo.png" class="h-100 w-100" alt="logo" />
+        </div>
+
+        <mat-form-field class="w-100">
+          <mat-label>First Name</mat-label>
+          <input matInput autocomplete="off" />
+        </mat-form-field>
+
+        <mat-form-field class="w-100">
+          <mat-label>Last Name</mat-label>
+          <input matInput autocomplete="off" />
+        </mat-form-field>
+
+        <mat-form-field class="w-100">
+          <mat-label>Email</mat-label>
+          <input matInput autocomplete="off" />
+        </mat-form-field>
+
+        <mat-form-field class="w-100">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" autocomplete="off" />
+        </mat-form-field>
+
+        <mat-form-field class="w-100">
+          <mat-label>Mobile</mat-label>
+          <input matInput autocomplete="off" />
+        </mat-form-field>
+
+        <button type="button" class="standard-btn">REGISTER</button>
+
+        <div class="login-register-link">
+          <span>
+            Already have an account?
+          </span>
+
+          <span class="link-text cursor-pointer font-weight-bold" (click)="showLogin = !showLogin">
+            LOGIN
+          </span>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
