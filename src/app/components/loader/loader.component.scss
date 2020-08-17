@@ -1,0 +1,10 @@
+.loader-wrapper {
+  position: absolute;
+  background: rgb(0, 0, 0, 0.6);
+  z-index: 1;
+
+  .loader {
+    height: 70px;
+    width: 70px;
+  }
+}

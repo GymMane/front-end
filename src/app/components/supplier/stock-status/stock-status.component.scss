@@ -1,0 +1,56 @@
+@import "variables.scss";
+
+.stock-status-wrapper {
+  padding: 15px;
+
+  .table-wrapper {
+    max-width: 100%;
+    max-height: 85vh;
+    overflow: auto;
+
+    .stock-status-table {
+      border: 1px solid rgba(0, 0, 0, .12);
+
+      .table-header {
+        background: $table-header-color;
+
+        th {
+          font-weight: 600;
+          padding-left: 10px;
+          padding-right: 10px
+        }
+
+      }
+
+      .stock-status-row {
+        background: $table-row-success-color;
+
+        td {
+          padding-left: 10px;
+          padding-right: 10px
+        }
+
+        &.danger {
+          background: $table-row-danger-color;
+        }
+
+        &.normal {
+          background: $table-row-normal-color;
+        }
+      }
+
+      .status-col {
+        min-width: 80px;
+      }
+
+      .desc-col {
+        min-width: 150px;
+      }
+
+      .remarks-col {
+        min-width: 200px;
+      }
+
+    }
+  }
+}

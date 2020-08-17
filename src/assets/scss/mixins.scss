@@ -1,0 +1,36 @@
+@import "variables.scss";
+
+//Main theme gradient text color 
+@mixin main-color-text {
+  background: -webkit-linear-gradient(#C33364, #692A71);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+//End
+
+
+//Main theme gradient background color 
+@mixin main-color-background {
+  background: linear-gradient(to bottom, #c33364, #af2d6b, #9a2a70, #822a72, #692a71);
+}
+
+//End
+
+//Mat input colors 
+@mixin mat-input-colors {
+  ::ng-deep .mat-focused .mat-form-field-label {
+    color: $main-color !important;
+  }
+
+  ::ng-deep .mat-form-field-underline {
+    background-color: $main-color !important;
+  }
+
+  ::ng-deep .mat-form-field-ripple {
+    background-color: $main-color !important;
+    ;
+  }
+}
+
+//End

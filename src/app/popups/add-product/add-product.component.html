@@ -1,0 +1,44 @@
+<div>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add Product</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <mat-form-field class="w-100">
+        <mat-label>Category</mat-label>
+        <input matInput [(ngModel)]="category" [ngModelOptions]="{standalone: true}" disabled />
+      </mat-form-field>
+
+      <mat-form-field class="w-100">
+        <mat-label>Quality</mat-label>
+        <input matInput [(ngModel)]="quality" [ngModelOptions]="{standalone: true}" />
+      </mat-form-field>
+
+      <mat-form-field class="w-100">
+        <mat-label>Description</mat-label>
+        <input matInput [(ngModel)]="description" [ngModelOptions]="{standalone: true}" />
+      </mat-form-field>
+
+      <!-- <mat-form-field>
+        <mat-label>Quality</mat-label>
+        <mat-select>
+          <mat-option value="premium">Premium</mat-option>
+          <mat-option value="Standard">Standard</mat-option>
+          <mat-option value="Economy">Economy</mat-option>
+        </mat-select>
+      </mat-form-field> -->
+
+      <mat-form-field class="w-100">
+        <mat-label>Quantity</mat-label>
+        <input matInput type="number" [(ngModel)]="quantity" [ngModelOptions]="{standalone: true}" />
+      </mat-form-field>
+
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+</div>
