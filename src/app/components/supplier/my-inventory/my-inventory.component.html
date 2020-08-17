@@ -1,0 +1,25 @@
+<div class="my-inventory-wrapper flex-display">
+  <div class="gym-items-list">
+    <ul class="category-wrapper">
+      <li class="category-list flex-display cursor-pointer" [ngClass]="{'active' : activeCatIndex === categoryIndex}"
+        (mouseenter)="hoverListIndex = categoryIndex" (mouseleave)="hoverListIndex = -1"
+        *ngFor="let category of categoryList; let categoryIndex = index"
+        (click)="selectCategory(category,categoryIndex)">
+        <div class="category-img-wrapper">
+          <img class="category-img h-100 w-100"
+            [src]="(hoverListIndex === categoryIndex || activeCatIndex === categoryIndex)? 'assets/images/dumbell_white.png' : 'assets/images/dumbell_black.png'"
+            alt="Category">
+        </div>
+        <span class="category-name">{{category.CategoryName}}</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="gym-items-info">
+    <div class="selected-category flex-display">
+      <span class="font-weight-bold">{{selectedCategory}}</span>
+      <button class="default-btn" (click)="addProduct()">Add Product</button>
+    </div>
+  </div>
+
+</div>

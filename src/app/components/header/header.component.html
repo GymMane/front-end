@@ -15,8 +15,8 @@
   <div class="collapse navbar-collapse collapse-wrapper" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" [ngClass]="{'active' : navIndex === index}" *ngFor="let nav of navList;let index = index;"
-        (click)="navIndex = index">
-        <span class="nav-link cursor-pointer">{{nav}}</span>
+        (click)="navIndex = index" [routerLink]="nav.url">
+        <span class="nav-link cursor-pointer">{{nav.text}}</span>
     </ul>
     <div class="my-2 my-lg-0">
       <div class="initial-wrppaer flex-display vertical-center font-weight-bold cursor-pointer">

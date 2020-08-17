@@ -4,13 +4,6 @@
 @mixin login-register-box {
   @include mat-input-colors;
 
-  .header {
-    color: $main-color;
-    display: block;
-    font-size: 30px;
-    line-height: 1.2;
-  }
-
   .logo {
     height: 100px;
     width: 100px;
@@ -37,13 +30,14 @@
     flex-wrap: wrap;
     padding: 15px;
     background: #f2f2f2;
+    position: relative;
 
     .login-box {
       width: 390px;
       background: $white-color;
       border-radius: 10px;
       overflow: hidden;
-      padding: 77px 55px 33px 55px;
+      padding: 30px 55px;
 
       box-shadow: $box-shadow;
       -moz-box-shadow: $box-shadow;
@@ -57,13 +51,32 @@
 
       .register-form {
         @include login-register-box;
+
+        .contact-text {
+          font-size: 14px;
+          padding-top: 15px;
+
+          .link-text {
+            border-bottom: 1px solid $main-color;
+            color: $main-color;
+          }
+        }
       }
+    }
+
+    .contact-us {
+      @include main-color-background;
+      position: absolute;
+      font-size: 14px;
+      padding: 10px;
+      bottom: 10px;
+      right: 20px;
     }
   }
 }
 
 @media (max-width: 576px) {
   .login-box {
-    padding: 77px 15px 33px 15px;
+    padding: 30px 55px;
   }
 }

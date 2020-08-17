@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { stockStatus } from '../../models/stockStatus.model';
+import { stockStatus } from '../../../models/stockStatus.model';
 
 const stockStatusTableData: stockStatus[] = [
   {
@@ -75,11 +75,11 @@ const stockStatusTableData: stockStatus[] = [
 ];
 
 @Component({
-  selector: 'home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'stock-status',
+  templateUrl: './stock-status.component.html',
+  styleUrls: ['./stock-status.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class StockStatusComponent implements OnInit {
 
   stockStatusColumns: string[] = ['num', 'status', 'orderNum', 'pin', 'description', 'issuedDate', 'dueDate', 'extendedDate', 'payment', 'productStatus', 'remarks'];
   stockStatusData = stockStatusTableData;
