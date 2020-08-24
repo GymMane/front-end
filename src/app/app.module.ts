@@ -4,7 +4,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 //Component imports
 import { AppComponent } from './app.component';
@@ -24,6 +23,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
 //End
 
 @NgModule({
@@ -45,14 +45,11 @@ import { MatSelectModule } from '@angular/material/select';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    NgbModalModule,
     MatInputModule,
     MatIconModule,
     MatTableModule,
-    MatSelectModule
-  ],
-  entryComponents: [
-    AddProductComponent
+    MatSelectModule,
+    MatDialogModule
   ],
   providers: [{ provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher }],
   bootstrap: [AppComponent]

@@ -1,0 +1,145 @@
+@import "variables.scss";
+@import "mixins.scss";
+
+.others-wrapper {
+  padding: 15px;
+
+  .downloads {
+    justify-content: flex-end;
+
+    .download-wrapper {
+      width: 170px;
+      border: 2px solid $main-color;
+      padding: 5px;
+      border-radius: 10px;
+
+      .icon-wrapper {
+        text-align: right;
+        justify-content: flex-end;
+
+        .icon-circle {
+          height: 22px;
+          width: 22px;
+          background: $main-color;
+          border-radius: 50%;
+
+          .material-icons {
+            color: $white-color;
+            font-size: 16px;
+          }
+        }
+      }
+
+      &.customer-complaint {
+        margin-left: 15px;
+      }
+    }
+  }
+
+  .user-feedback {
+    @include box-shadow;
+    margin: 15px 20% 0;
+    border-radius: 5px;
+    padding: 15px;
+
+    .header {
+      padding: 0 20px 20px 20px;
+      font-size: 22px;
+    }
+
+    .feedback-smiley-wrapper {
+      padding: 20px 0;
+      border-top: 2px solid $light-grey-color;
+      border-bottom: 2px solid $light-grey-color;
+
+      .smiley-text {
+        padding-bottom: 20px;
+        font-size: 16px;
+        color: #848484;
+      }
+
+      .smileys-wrapper {
+        padding: 20px 0 0;
+
+        .smiley-icon {
+          -webkit-text-stroke: 2px $white-color;
+          color: #bbbbbb;
+          padding: 0 5px;
+
+          &.angry {
+
+            &.active {
+              color: $warning-red-color;
+            }
+          }
+
+          &.smile {
+
+            &.active {
+              color: $orange-color;
+            }
+          }
+
+          &.happy {
+
+            &.active {
+              color: $green-color;
+            }
+          }
+        }
+      }
+    }
+
+    .feedback-category {
+      padding: 20px 10px 10px;
+      border-bottom: 2px solid $light-grey-color;
+
+      .category-header {
+        color: #848484;
+        margin-bottom: 20px;
+      }
+
+      .category {
+        padding-bottom: 10px;
+
+        .category-box {
+          border: 1px solid $light-grey-color;
+          height: 55px;
+          border-radius: 5px;
+          padding: 5px;
+          background: #f7f7f7;
+
+          &.active {
+            border: 2px solid $green-color;
+            font-weight: bold;
+          }
+        }
+      }
+
+    }
+
+    .feedback-box {
+      padding: 20px 10px 30px;
+
+      .text-header {
+        color: #848484;
+        margin-bottom: 20px;
+      }
+
+      .text-area {
+        border: 1px solid $light-grey-color;
+      }
+    }
+
+    .submit-feedback {
+      padding-right: 10px;
+    }
+  }
+
+}
+
+@media (max-width: 576px) {
+  .user-feedback {
+    margin: 15px 5% 0 !important;
+  }
+}

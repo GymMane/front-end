@@ -1,7 +1,16 @@
-.close {
+@import "mixins.scss";
 
-  &:active,
-  &:focus {
-    outline: none;
-  }
+.header-wrapper {
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 40px;
+}
+
+.add-product.form {
+  @include mat-input-colors;
+}
+
+.dailog-btns {
+  justify-content: space-between;
+  padding-bottom: 20px;
 }

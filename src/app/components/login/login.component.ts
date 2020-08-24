@@ -33,8 +33,9 @@ export class LoginComponent implements OnInit {
     this.loaderService.setLoaderState(true);
     this.loginService.getAuthToken(this.userName, this.password).subscribe(loginResp => {
       console.log(loginResp)
+      sessionStorage.setItem("token", JSON.stringify(loginResp));
       this.loaderService.setLoaderState(false);
-      this.router.navigate(["/home"]);
+      this.router.navigate(["/stock-status"]);
     },
       loginErr => {
         this.loaderService.setLoaderState(false);
@@ -42,6 +43,7 @@ export class LoginComponent implements OnInit {
       });
   }
 
+  //Register new user
   registerUser(): void {
 
     this.loaderService.setLoaderState(true);

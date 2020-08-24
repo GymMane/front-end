@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  //Initial values
   navList: { text: string, url: string }[] = [
     { text: "Stock Status", url: "/stock-status" },
     { text: "My Inventory", url: "/my-inventory" },

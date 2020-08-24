@@ -62,6 +62,53 @@
   }
 }
 
+.preview-table-wrapper {
+
+  .table-wrapper {
+    max-width: 100%;
+    max-height: 85vh;
+    overflow: auto;
+
+    .preview-table {
+      border: 1px solid rgba(0, 0, 0, .12);
+
+      .table-header {
+        background: $table-header-color;
+
+        th {
+          font-weight: 600;
+          padding-left: 10px;
+          padding-right: 10px;
+          min-width: 100px;
+        }
+
+      }
+
+      .preview-table-row {
+
+        td {
+          padding-left: 10px;
+          padding-right: 10px;
+          min-width: 100px;
+        }
+      }
+
+      .desc-col {
+        min-width: 150px !important;
+      }
+
+      .suuplied-date-col {
+        min-width: 160px !important;
+      }
+
+    }
+  }
+
+  .submit-wrapper {
+    margin-top: 10px;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .my-inventory-wrapper {
 
