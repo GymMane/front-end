@@ -1,7 +1,7 @@
 <div class="login-wrapper w-100">
   <div class="login-container w-100 flex-display vertical-center text-center">
     <div class="login-box">
-      <form class="login-form w-100" *ngIf="showLogin">
+      <form [formGroup]="loginForm" (ngSubmit)="loginUser('login')" class="login-form w-100" *ngIf="showLogin">
 
         <div class="logo">
           <img src="assets/images/logo.png" class="h-100 w-100" alt="logo" />
@@ -9,15 +9,15 @@
 
         <mat-form-field class="w-100">
           <mat-label>Username</mat-label>
-          <input matInput [(ngModel)]="userName" [ngModelOptions]="{standalone: true}" />
+          <input matInput formControlName="email" />
         </mat-form-field>
 
         <mat-form-field class="w-100">
           <mat-label>Password</mat-label>
-          <input matInput type="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" />
+          <input matInput type="password" formControlName="password" />
         </mat-form-field>
 
-        <button type="button" class="standard-btn" (click)="loginUser()">LOGIN</button>
+        <button class="standard-btn" (click)="loginUser('login')">LOGIN</button>
 
         <div class="login-register-link">
           <span>
@@ -31,34 +31,59 @@
 
       </form>
 
-      <form class="register-form" *ngIf="!showLogin">
+      <form class="register-form" [formGroup]="registerForm" (ngSubmit)="showOtp? verifyOtp() : sendOtp()"
+        *ngIf="!showLogin">
 
         <div class="logo">
           <img src="assets/images/logo.png" class="h-100 w-100" alt="logo" />
         </div>
 
-        <mat-form-field class="w-100">
-          <mat-label>Name</mat-label>
-          <input matInput [(ngModel)]="name" [ngModelOptions]="{standalone: true}" autocomplete="off" />
-        </mat-form-field>
+        <ng-container *ngIf="!showOtp">
+          <mat-form-field class="w-100">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="userName" autocomplete="off" />
+          </mat-form-field>
 
-        <mat-form-field class="w-100">
-          <mat-label>Email</mat-label>
-          <input matInput [(ngModel)]="email" [ngModelOptions]="{standalone: true}" autocomplete="off" />
-        </mat-form-field>
+          <mat-form-field class="w-100">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" autocomplete="off" />
+          </mat-form-field>
 
-        <mat-form-field class="w-100">
-          <mat-label>Password</mat-label>
-          <input matInput [(ngModel)]="registerPassword" [ngModelOptions]="{standalone: true}" type="password"
-            autocomplete="off" />
-        </mat-form-field>
+          <mat-form-field class="w-100">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" type="password" autocomplete="off" />
+          </mat-form-field>
 
-        <mat-form-field class="w-100">
-          <mat-label>Mobile</mat-label>
-          <input matInput [(ngModel)]="mobileNum" [ngModelOptions]="{standalone: true}" autocomplete="off" />
-        </mat-form-field>
+          <mat-form-field class="w-100">
+            <mat-label>Mobile</mat-label>
+            <input matInput formControlName="mobileNum" maxlength="10" autocomplete="off" />
+          </mat-form-field>
 
-        <button type="button" class="standard-btn" (click)="registerUser()">REGISTER</button>
+          <button class="standard-btn" (click)="sendOtp()">REGISTER</button>
+        </ng-container>
+
+        <ng-container *ngIf="showOtp">
+          <div class="otp-msg">Otp has been sent to your mail id. Please enter OTP to verify your account.</div>
+
+          <mat-form-field class="w-100">
+            <mat-label>OTP</mat-label>
+            <input matInput formControlName="otp" maxlength="6" autocomplete="off" />
+          </mat-form-field>
+
+          <div class="flex-display resend-otp-wrapper">
+            <span class="back-to-register flex-display cursor-pointer" (click)="showOtp = false">
+              <span class="material-icons">
+                keyboard_backspace
+              </span>
+              <span>Back</span>
+            </span>
+
+            <span class="resend-otp cursor-pointer" (click)="sendOtp()">Resend OTP</span>
+          </div>
+
+          <button class="standard-btn" (click)="verifyOtp()">Verify</button>
+
+        </ng-container>
 
         <div class="login-register-link">
           <span>

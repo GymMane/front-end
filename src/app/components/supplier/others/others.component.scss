@@ -2,7 +2,7 @@
 @import "mixins.scss";
 
 .others-wrapper {
-  padding: 15px;
+  padding: 70px 15px 15px;
 
   .downloads {
     justify-content: flex-end;
@@ -44,7 +44,7 @@
 
     .header {
       padding: 0 20px 20px 20px;
-      font-size: 22px;
+      font-size: 24px;
     }
 
     .feedback-smiley-wrapper {
@@ -53,39 +53,54 @@
       border-bottom: 2px solid $light-grey-color;
 
       .smiley-text {
-        padding-bottom: 20px;
-        font-size: 16px;
+        // padding-bottom: 20px;
+        font-size: 20px;
         color: #848484;
       }
 
       .smileys-wrapper {
         padding: 20px 0 0;
+        justify-content: center;
+
+        .angry {
+
+          &.active {
+
+            .smiley-icon,
+            .label {
+              color: $warning-red-color;
+            }
+          }
+
+        }
+
+        .smile {
+
+          &.active {
+
+            .smiley-icon,
+            .label {
+              color: $orange-color;
+            }
+          }
+
+        }
+
+        .happy {
+
+          &.active {
+
+            .smiley-icon,
+            .label {
+              color: $green-color;
+            }
+          }
+        }
 
         .smiley-icon {
           -webkit-text-stroke: 2px $white-color;
           color: #bbbbbb;
           padding: 0 5px;
-
-          &.angry {
-
-            &.active {
-              color: $warning-red-color;
-            }
-          }
-
-          &.smile {
-
-            &.active {
-              color: $orange-color;
-            }
-          }
-
-          &.happy {
-
-            &.active {
-              color: $green-color;
-            }
-          }
         }
       }
     }
@@ -119,7 +134,7 @@
     }
 
     .feedback-box {
-      padding: 20px 10px 30px;
+      padding: 20px 10px;
 
       .text-header {
         color: #848484;

@@ -52,6 +52,27 @@
       .register-form {
         @include login-register-box;
 
+        .otp-msg {
+          color: $main-color;
+        }
+
+        .resend-otp-wrapper {
+          align-items: center;
+          justify-content: space-between;
+
+          .back-to-register {
+            align-items: center;
+
+            span {
+              color: $main-color;
+            }
+          }
+
+          .resend-otp {
+            font-size: 12px;
+          }
+        }
+
         .contact-text {
           font-size: 14px;
           padding-top: 15px;

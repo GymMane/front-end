@@ -1,14 +1,11 @@
 export interface stockStatus {
-  num: number;
-  status: string;
-  orderNum: number;
-  pin: string;
-  description: string;
-  issuedDate: string;
-  dueDate: string;
-  extendedDate: string;
-  payment: string;
-  productStatus: string;
-  remarks: string;
-  color: string;
+  DeliveryStatus: string;
+  ExtendedDate: string;
+  ID: number;
+  IssuedDate: string;
+  OrderID: number;
+  PaymentStatus: string;
+  ProductPIN: string;
+  ReturnDate: string;
+  Status: string;
 }

@@ -1,0 +1,14 @@
+<div class="gym-items-list h-100 w-100">
+  <ul class="category-wrapper">
+    <li class="category-list flex-display cursor-pointer" [ngClass]="{'active' : activeCatIndex === categoryIndex}"
+      (mouseenter)="hoverListIndex = categoryIndex" (mouseleave)="hoverListIndex = -1"
+      *ngFor="let category of categoryList; let categoryIndex = index" (click)="selectCategory(category,categoryIndex)">
+      <div class="category-img-wrapper">
+        <img class="category-img h-100 w-100" *ngIf="category.CategoryName !== 'All Products'"
+          [src]="(hoverListIndex === categoryIndex || activeCatIndex === categoryIndex)? category.ImageWhite : category.ImageBlack"
+          alt="Category">
+      </div>
+      <span class="category-name">{{category.CategoryName}}</span>
+    </li>
+  </ul>
+</div>

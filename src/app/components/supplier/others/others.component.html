@@ -1,68 +1,78 @@
 <div class="others-wrapper">
-  <div class="downloads flex-display">
-    <div class="download-wrapper cursor-pointer">
-      <span class="header font-weight-bold">Payment Details</span>
-      <div class="icon-wrapper flex-display">
-        <div class="icon-circle flex-display vertical-center">
-          <span class="material-icons">
-            vertical_align_bottom
-          </span>
+  <form>
+    <div class="downloads flex-display">
+      <div class="download-wrapper cursor-pointer">
+        <span class="header font-weight-bold">Payment Details</span>
+        <div class="icon-wrapper flex-display">
+          <div class="icon-circle flex-display vertical-center">
+            <span class="material-icons">
+              vertical_align_bottom
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="download-wrapper customer-complaint cursor-pointer">
+        <span class="header font-weight-bold">Customer Complaints</span>
+        <div class="icon-wrapper flex-display">
+          <div class="icon-circle flex-display vertical-center">
+            <span class="material-icons">
+              vertical_align_bottom
+            </span>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="download-wrapper customer-complaint cursor-pointer">
-      <span class="header font-weight-bold">Customer Complaints</span>
-      <div class="icon-wrapper flex-display">
-        <div class="icon-circle flex-display vertical-center">
-          <span class="material-icons">
-            vertical_align_bottom
-          </span>
+    <div class="user-feedback">
+      <div class="header font-weight-bold text-right">Feedback</div>
+      <div class="feedback-smiley-wrapper text-center">
+        <div class="smiley-text font-weight-bold">We value your feedback</div>
+        <!-- <div>What is your opinion of this page?</div> -->
+        <div class="smileys-wrapper flex-display">
+          <div class="happy" [ngClass]="{'active' : smileyIndex === 0}">
+            <i class="far fa-kiss-wink-heart fa-4x smiley-icon cursor-pointer" (click)="selectSmiley(0, 1)"></i>
+            <div class="label">Loved It</div>
+          </div>
+          <div class="smile" [ngClass]="{'active' : smileyIndex === 1}">
+            <i class="far fa-smile fa-4x smiley-icon cursor-pointer" (click)="selectSmiley(1, 2)"></i>
+            <div class="label">Good</div>
+          </div>
+          <div class="angry" [ngClass]="{'active' : smileyIndex === 2}">
+            <i class="far fa-angry fa-4x smiley-icon cursor-pointer" (click)="selectSmiley(2, 3)"></i>
+            <div class="label">Poor</div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
+      <!-- <div class="feedback-category">
+        <div class="category-header font-weight-bold">Please suggest your feedback category below</div>
 
-  <div class="user-feedback">
-    <div class="header font-weight-bold text-right">Your Feedback</div>
-    <div class="feedback-smiley-wrapper text-center">
-      <div class="smiley-text font-weight-bold">We would like your feedback to improve our website</div>
-      <div>What is your opinion of this page?</div>
-      <div class="smileys-wrapper">
-        <i class="far fa-angry fa-4x smiley-icon angry cursor-pointer" [ngClass]="{'active' : smileyIndex === 0}"
-          (click)="selectSmiley(0)"></i>
-        <i class="far fa-smile fa-4x smiley-icon smile cursor-pointer" [ngClass]="{'active' : smileyIndex === 1}"
-          (click)="selectSmiley(1)"></i>
-        <i class="far fa-kiss-wink-heart fa-4x smiley-icon happy cursor-pointer"
-          [ngClass]="{'active' : smileyIndex === 2}" (click)="selectSmiley(2)"></i>
+        <div class="category-btns row">
+          <div class="col-12 col-xs-12 col-sm-12 col-md-4 col-ld-4 col-xl-4 category">
+            <div class="category-box flex-display vertical-center text-center cursor-pointer"
+              [ngClass]="{'active' : categoryIndex === 0}" (click)="selectCategory(0, 'Suggestion')">Suggestion</div>
+          </div>
+          <div class="col-12 col-xs-12 col-sm-12 col-md-4 col-ld-4 col-xl-4 category">
+            <div class="category-box flex-display vertical-center text-center cursor-pointer"
+              [ngClass]="{'active' : categoryIndex === 1}" (click)="selectCategory(1, 'Something is not quite right')">
+              Something is not quite right</div>
+          </div>
+          <div class="col-12 col-xs-12 col-sm-12 col-md-4 col-ld-4 col-xl-4 category">
+            <div class="category-box flex-display vertical-center text-center cursor-pointer"
+              [ngClass]="{'active' : categoryIndex === 2}" (click)="selectCategory(2, 'Complement')">Complement</div>
+          </div>
+        </div>
+      </div> -->
+      <div class="feedback-box font-weight-bold">
+        <div class="text-header">Please leave your Suggestions / Complements below</div>
+        <textarea class="text-area w-100" name="feedbackText" [(ngModel)]="feedbackText"
+          [ngModelOptions]="{standalone: true}" rows="2"></textarea>
+      </div>
+
+      <div class="submit-feedback text-right">
+        <button type="button" class="default-btn" (click)="giveFeedback()">Submit</button>
       </div>
     </div>
-    <div class="feedback-category">
-      <div class="category-header font-weight-bold">Please suggest your feedback category below</div>
-
-      <div class="category-btns row">
-        <div class="col-12 col-xs-12 col-sm-12 col-md-4 col-ld-4 col-xl-4 category">
-          <div class="category-box flex-display vertical-center text-center cursor-pointer"
-            [ngClass]="{'active' : categoryIndex === 0}" (click)="selectCategory(0)">Suggestion</div>
-        </div>
-        <div class="col-12 col-xs-12 col-sm-12 col-md-4 col-ld-4 col-xl-4 category">
-          <div class="category-box flex-display vertical-center text-center cursor-pointer"
-            [ngClass]="{'active' : categoryIndex === 1}" (click)="selectCategory(1)">Something is not quite right</div>
-        </div>
-        <div class="col-12 col-xs-12 col-sm-12 col-md-4 col-ld-4 col-xl-4 category">
-          <div class="category-box flex-display vertical-center text-center cursor-pointer"
-            [ngClass]="{'active' : categoryIndex === 2}" (click)="selectCategory(2)">Complement</div>
-        </div>
-      </div>
-    </div>
-    <div class="feedback-box font-weight-bold">
-      <div class="text-header">Please leave your feedback below</div>
-      <textarea class="text-area w-100" rows="4"></textarea>
-    </div>
-
-    <div class="submit-feedback text-right">
-      <button type="button" class="default-btn">Submit</button>
-    </div>
-  </div>
+  </form>
 
 </div>

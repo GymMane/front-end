@@ -1,9 +1,9 @@
-<nav class="header-wrapper navbar navbar-expand-lg navbar-light">
-  <a class="navbar-brand" href="#">
-    <div class="logo">
-      <img src="assets/images/logo.png" class="h-100 w-100" alt="logo" />
-    </div>
-  </a>
+<nav class="header-wrapper navbar navbar-expand-lg navbar-light w-100">
+  <!-- <a class="navbar-brand" href="#"> -->
+  <div class="logo" (click)="navigateToHome()">
+    <img src="assets/images/logo.png" class="h-100 w-100" alt="logo" />
+  </div>
+  <!-- </a> -->
   <button class="navbar-toggler menu-icon-wrapper" type="button" data-toggle="collapse"
     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
     aria-label="Toggle navigation">
@@ -14,13 +14,28 @@
 
   <div class="collapse navbar-collapse collapse-wrapper" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item" [ngClass]="{'active' : navIndex === index}" *ngFor="let nav of navList;let index = index;"
-        (click)="navIndex = index" [routerLink]="nav.url">
+      <li class="nav-item" [ngClass]="{'active' : routerUrl === nav.url}"
+        *ngFor="let nav of (userRoleId === 'Supplier'? (navList | slice : 0:3) :(navList | slice : 3));let index = index;"
+        [routerLink]="nav.url">
         <span class="nav-link cursor-pointer">{{nav.text}}</span>
+      </li>
     </ul>
-    <div class="my-2 my-lg-0">
-      <div class="initial-wrppaer flex-display vertical-center font-weight-bold cursor-pointer">
-        <span class="initial">R</span>
+    <div class="my-2 my-lg-0 right-option flex-display">
+      <div class="user-dropdown dropdown">
+        <span class="material-icons apps-icon" id="userDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          power_settings_new
+        </span>
+        <div class="dropdown-menu" aria-labelledby="userDropdown">
+          <div class="dropdown-item cursor-pointer" routerLink="/profile">My Profile</div>
+          <div class="dropdown-divider"></div>
+          <div class="dropdown-item cursor-pointer" (click)="logout()">
+            Logout
+          </div>
+        </div>
+      </div>
+      <div class="initial-wrapper flex-display vertical-center font-weight-bold">
+        <span class="initial">{{this.userInfo?.User?.LoginName | slice:0:1 | uppercase }}</span>
       </div>
     </div>
   </div>

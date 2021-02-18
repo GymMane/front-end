@@ -1,58 +1,28 @@
 @import "variables.scss";
 
 .my-inventory-wrapper {
-  position: relative;
 
-  .gym-items-list {
-    width: 20%;
-    height: 90vh;
-    overflow-y: auto;
-    border-right: 1px solid $light-grey-color;
-    padding: 10px 0;
+  padding-top: 55px;
 
-    .menu-icon {
-      display: block;
-    }
+  .table-name {
+    padding-bottom: 10px;
+    align-items: center;
 
-    .category-wrapper {
-      list-style-type: none;
-      padding: 0;
-      margin-bottom: 0;
-
-      .category-list {
-        align-items: center;
-        padding: 10px;
-        margin-bottom: 10px;
-
-        .category-img-wrapper {
-          height: 40px;
-          width: 40px;
-          margin-right: 10px;
-        }
-
-        .category-name {
-          font-size: 14px;
-        }
-
-        &:hover,
-        &.active {
-          background: $main-color;
-
-          .category-name {
-            color: #fff;
-          }
-        }
-      }
-    }
-
-    &::-webkit-scrollbar {
-      display: none;
+    .name {
+      margin-left: 5px;
     }
   }
 
+  .category-list {
+    width: 15%;
+    background: $white-color;
+    position: fixed;
+    z-index: 1;
+  }
+
   .gym-items-info {
-    width: 80%;
-    padding: 10px;
+    margin-left: 15%;
+    padding: 15px;
 
     .selected-category {
       padding: 10px 0;
@@ -63,6 +33,15 @@
 }
 
 .preview-table-wrapper {
+
+  .table-name {
+    padding-bottom: 10px;
+    align-items: center;
+
+    .name {
+      margin-left: 5px;
+    }
+  }
 
   .table-wrapper {
     max-width: 100%;
@@ -79,7 +58,7 @@
           font-weight: 600;
           padding-left: 10px;
           padding-right: 10px;
-          min-width: 100px;
+          min-width: 80px;
         }
 
       }
@@ -89,17 +68,21 @@
         td {
           padding-left: 10px;
           padding-right: 10px;
-          min-width: 100px;
+          min-width: 80px;
         }
       }
 
-      .desc-col {
-        min-width: 150px !important;
+      .num-col {
+        min-width: 50px !important;
       }
 
-      .suuplied-date-col {
-        min-width: 160px !important;
+      .desc-col {
+        min-width: 250px !important;
       }
+
+      // .suuplied-date-col {
+      //   min-width: 160px !important;
+      // }
 
     }
   }
@@ -111,21 +94,6 @@
 
 @media screen and (max-width: 480px) {
   .my-inventory-wrapper {
-
-    .gym-items-list {
-      width: 0;
-      position: absolute;
-      z-index: 1;
-      top: 0;
-      left: 0;
-      overflow-x: hidden;
-      transition: 0.5s;
-      padding-top: 60px;
-
-      .menu-icon {
-        display: block;
-      }
-    }
 
     .gym-items-info {
       width: 100%;

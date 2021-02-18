@@ -11,23 +11,26 @@ export class RegisterService {
 
   constructor(private http: HttpClient) { }
 
+  //Register new user
   registerUser(email, mobileNum, name, password) {
     const requestBody = {
-      LoginID: null,
-      EmailID: email,
-      MobileNumber: mobileNum,
       LoginName: name,
       Password: password,
-      RoleID: 3,
-      Deleted: 0,
-      LastLoginDateTime: new Date(),
-      Role: "Supplier"
+      EmailID: email,
+      MobileNumber: mobileNum,
+      RoleID: 3
     };
 
-    const headerOptions = {
-      headers: new HttpHeaders().set('Content-Type', 'application/json')
-    };
+    return this.http.post(`${environment.apiUrl}register/NewRegistration`, requestBody);
+  }
 
-    return this.http.post(`${environment.apiUrl}register/NewRegistration`, requestBody, headerOptions);
+    //Send otp number from API
+    sendOtp(mailId, mobileNum, userName) {
+      return this.http.post(`${environment.apiUrl}register/sendotp?p_EmailID=${mailId}&p_MobileNumber=${mobileNum}&p_LoginName=${userName}`, {});
+    }
+
+  //Verify otp number from API
+  verifyOtp(mailId, mobileNum, otp) {
+    return this.http.post(`${environment.apiUrl}register/VerifyOTP?p_EmailID=${mailId}&p_MobileNumber=${mobileNum}&p_OTP=${otp}`, {});
   }
 }

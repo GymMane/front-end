@@ -1,0 +1,60 @@
+<div class="my-orders-wrapper">
+  <div class="table-wrapper">
+    <table mat-table [dataSource]="stockStatusData" class="my-orders-table w-100">
+
+      <ng-container matColumnDef="num">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let order; let rowIndex = index"> {{rowIndex+1}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Image">
+        <th mat-header-cell *matHeaderCellDef> Image </th>
+        <td mat-cell *matCellDef="let order"></td>
+      </ng-container>
+
+      <ng-container matColumnDef="OrderID">
+        <th mat-header-cell *matHeaderCellDef> Order ID </th>
+        <td mat-cell *matCellDef="let order"> {{order.OrderID}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="CategoryName">
+        <th mat-header-cell *matHeaderCellDef> Items </th>
+        <td mat-cell *matCellDef="let order"> {{order.CategoryName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="IssuedDate">
+        <th mat-header-cell *matHeaderCellDef> From Date </th>
+        <td mat-cell *matCellDef="let order"> {{order.IssuedDate | date : 'dd MMM yyyy'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="ReturnDate">
+        <th mat-header-cell *matHeaderCellDef> Due Date </th>
+        <td mat-cell *matCellDef="let order"> {{order.ReturnDate | date : 'dd MMM yyyy'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="ExtendedDate">
+        <th mat-header-cell *matHeaderCellDef> Extended Date </th>
+        <td mat-cell *matCellDef="let order"> {{order.ExtendedDate? (order.ExtendedDate | date : 'dd MMM yyyy') : 'NA'}}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Price">
+        <th mat-header-cell *matHeaderCellDef> Amount </th>
+        <td mat-cell *matCellDef="let order"> {{order.Price}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Status">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let order"> {{order.Status}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="ValueOfProduct">
+        <th mat-header-cell *matHeaderCellDef> Value of Product </th>
+        <td mat-cell *matCellDef="let order"> {{order.ValueOfProduct}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="stockStatusColumns; sticky: true" class="table-header"></tr>
+      <tr mat-row *matRowDef="let row; columns: stockStatusColumns;" class="my-orders-row"></tr>
+    </table>
+  </div>
+</div>

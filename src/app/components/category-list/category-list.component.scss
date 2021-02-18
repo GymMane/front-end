@@ -1,0 +1,65 @@
+@import "variables.scss";
+
+.gym-items-list {
+  min-height: 91vh;
+  overflow-y: auto;
+  border-right: 1px solid $light-grey-color;
+  padding: 10px 0;
+
+  .menu-icon {
+    display: block;
+  }
+
+  .category-wrapper {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 0;
+
+    .category-list {
+      align-items: center;
+      padding: 10px;
+      margin-bottom: 10px;
+
+      .category-img-wrapper {
+        height: 40px;
+        width: 40px;
+        margin-right: 10px;
+      }
+
+      .category-name {
+        font-size: 14px;
+      }
+
+      &:hover,
+      &.active {
+        background: $main-color;
+
+        .category-name {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+
+  .gym-items-list {
+    width: 0;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+
+    .menu-icon {
+      display: block;
+    }
+  }
+}

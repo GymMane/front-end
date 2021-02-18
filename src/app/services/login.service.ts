@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
-import { token } from '../models/token.model';
-import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  
+
 
   constructor(private http: HttpClient) { }
 
+  //Get authentication token
   getAuthToken(userName, password) {
     const requestBody = `username=${userName}&password=${password}&grant_type=password`;
 

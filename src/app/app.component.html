@@ -1,5 +1,5 @@
 <main>
+  <loader></loader>
   <header *ngIf="router.url !== '/login'"></header>
-  <loader *ngIf="loaderService.loaderState"></loader>
   <router-outlet></router-outlet>
 </main>

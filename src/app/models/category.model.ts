@@ -18,4 +18,6 @@ export interface category {
   Height: categoryList[];
   Quality: categoryList[];
   Weight: categoryList[];
+  ImageBlack: string;
+  ImageWhite: string;
 }

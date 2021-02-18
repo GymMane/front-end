@@ -1,0 +1,35 @@
+@import "variables.scss";
+
+.my-orders-wrapper {
+  padding: 70px 15px 15px;
+
+  .table-wrapper {
+    max-width: 100%;
+    max-height: 85vh;
+    overflow: auto;
+
+    .my-orders-table {
+      border: 1px solid rgba(0, 0, 0, .12);
+
+      .table-header {
+        background: $table-header-color;
+
+        th {
+          font-weight: 600;
+          padding-left: 10px;
+          padding-right: 10px
+        }
+
+      }
+
+      .my-orders-row {
+
+        td {
+          padding-left: 10px;
+          padding-right: 10px
+        }
+      }
+
+    }
+  }
+}

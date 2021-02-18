@@ -10,11 +10,11 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class AddProductComponent implements OnInit {
   data: any = {};
-  action: string = "";
   type: string = "";
   quality: string = "";
   weight: string = "";
   height: string = "";
+  typeList: any = [];
 
   constructor(
     private myInventoryService: MyInventoryService,
@@ -23,7 +23,13 @@ export class AddProductComponent implements OnInit {
   ) {
     this.data = { ...popupData };
     console.log(this.data)
-    this.action = popupData.action;
+    this.typeList = (this.data.product.Material.length > 0) ? this.data.product.Material : this.data.product.Technology;
+
+    if (popupData.action === "edit") {
+      this.type = this.data.typeDesc;
+      this.weight = this.data.weightDesc;
+      this.height = this.data.heightDesc;
+    }
   }
 
   ngOnInit(): void {
@@ -31,17 +37,23 @@ export class AddProductComponent implements OnInit {
   }
 
   addProduct(): void {
+    const productDetils = {};
+    productDetils["TechnologyTypeID"] = this.data.product.Technology.length > 0 ? this.data.type : "";
+    productDetils["MaterialTypeID"] = this.data.product.Material.length > 0 ? this.data.type : "";
+    productDetils["WeightCategoryID"] = this.data.product.Weight.length > 0 ? this.data.weight : "";
+    productDetils["HeightCategoryId"] = this.data.height;
+
     let addProduct = {
       ...this.data,
-      Type: this.type,
-      Product: this.data.product.CategoryName,
+      typeDesc: this.type,
+      weightDesc: this.weight,
+      heightDesc: this.height,
       Quality: this.quality,
-      Weight: this.weight,
-      Height: this.height
+      Product: { ...productDetils }
     };
 
     this.dialogRef.close({
-      event: this.action,
+      event: this.data.action,
       data: addProduct
     });
   }

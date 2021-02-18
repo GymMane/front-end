@@ -2,10 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddProductComponent } from "../../../popups/add-product/add-product.component";
 import { stockStatus } from '../../../models/stockStatus.model';
-import { category } from '../../../models/category.model';
 import { MatTableDataSource, MatTable } from '@angular/material/table';
 import { MyInventoryService } from '../../../services/supplier/my-inventory.service';
-import { LoaderService } from '../../../services/loader.service';
+import { category } from '../../../models/category.model';
+import { ProfileService } from '../../../services/profile.service';
 
 @Component({
   selector: 'app-my-inventory',
@@ -18,60 +18,31 @@ export class MyInventoryComponent implements OnInit {
   @ViewChild('previewTable') previewTable: MatTable<any>;
   @ViewChild('stockTable') stockTable: MatTable<any>;
 
-  hoverListIndex: number = -1;
-  activeCatIndex: number = 0;
-  categoryList: category[] = [];
-  selectedCategory: category;
-  previewTableColumns: string[] = ['Num', 'Image', 'Product', 'Type', 'Weight', 'Description', 'Quantity', 'Quality', 'Edit', 'Delete'];
+  selectedCategory: category = null;
+  previewTableColumns: string[] = ['Num', 'Image', 'Product', 'typeDesc', 'weightDesc', 'heightDesc', 'Quantity', 'Quality', 'Description', 'Edit', 'Delete'];
   previewTablesData: any = new MatTableDataSource<any>([]);
-  stockTableColumns: string[] = ['Num', 'Image', 'CategoryName', 'Product', 'Weight', 'Description', 'Quantity', 'QualityCategory', 'SuppliedDate', 'Demand', 'Delete'];
+  stockTableColumns: string[] = ['Num', 'Image', 'CategoryName', 'Demand', 'Weight', 'Quantity', 'QualityCategory', 'SuppliedDate', 'Description', 'Delete'];
   stockTableData: any = new MatTableDataSource<any>([]);
   showPreviewTable: boolean = false;
-
-  //   "GymPIN": "MYS00004",
-  //   "ProductCategoryID":"1",
-  // "QualityCategoryID":"1",
-  // "Quantity":"6",
-  // "Demand":"High",
-  // "Description":"Basic Pedals",
-  // "SupplierLoginID":"10",
-  // "Image":"",
-  // "Product":{
-  //   "TechnologyType":"Analog"
-  // }
 
   constructor(
     public dialog: MatDialog,
     private myInventoryService: MyInventoryService,
-    private loaderService: LoaderService
+    private profileService: ProfileService
   ) { }
 
   ngOnInit(): void {
-    this.getCatrgoryList();
     this.getStocks();
-  }
-
-  //Get category list from API
-  getCatrgoryList(): void {
-    this.myInventoryService.getCatrgoryList().subscribe(
-      categoryResponse => {
-        console.log(categoryResponse);
-        this.categoryList = categoryResponse;
-        this.selectedCategory = categoryResponse[0];
-      },
-      categoryError => {
-        console.log(categoryError)
-      }
-    );
   }
 
   //Get submmitted stocks from API
   getStocks(): void {
-    this.myInventoryService.getStocks().subscribe(
+    const supplierId = JSON.parse(this.profileService.getUserInfo().userInfo)["SupplierInfo"]["LoginID"];
+
+    this.myInventoryService.getStocks(supplierId).subscribe(
       stockResponse => {
         console.log(stockResponse);
         this.stockTableData.data = stockResponse;
-
       },
       stockError => {
         console.log(stockError)
@@ -79,32 +50,26 @@ export class MyInventoryComponent implements OnInit {
     );
   }
 
-  //Select category from left list
-  selectCategory(category, index): void {
-    this.activeCatIndex = index;
-    this.selectedCategory = category;
-  }
-
   //Add product to inventory 
   addProduct(): void {
+
+    const supplierInfo = JSON.parse(this.profileService.getUserInfo().userInfo)["SupplierInfo"];
 
     //Open add product popup
     const dialogRef = this.dialog.open(AddProductComponent, {
       data: {
         product: this.selectedCategory,
-        GymPIN: "MYS00004",
+        GymPIN: supplierInfo.GymPIN,
         ProductCategoryID: this.selectedCategory.CategoryID,
         QualityCategoryID: "",
-        Weight: "",
-        Height: "",
+        typeDesc: "",
+        weightDesc: "",
+        heightDesc: "",
         Quantity: "",
         Demand: "High",
         Description: "",
-        SupplierLoginID: "10",
+        SupplierLoginID: supplierInfo.LoginID,
         Image: "",
-        Product: {
-          TechnologyType: ""
-        },
         action: "add"
       },
       autoFocus: false,
@@ -113,10 +78,9 @@ export class MyInventoryComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result.event === "add") {
-        console.log(result)
         const { action, ...tableRow } = result.data;
         const tableData = [...this.previewTablesData.data];
-        tableData.push(tableRow)
+        tableData.push(tableRow);
         this.previewTablesData = new MatTableDataSource<any>(tableData);
         this.showPreviewTable = true;
       }
@@ -174,8 +138,6 @@ export class MyInventoryComponent implements OnInit {
           this.getStocks();
           this.showPreviewTable = false;
         }
-        console.log(addResponse);
-
       },
       addError => {
         console.log(addError);

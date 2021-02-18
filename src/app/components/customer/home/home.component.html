@@ -1,0 +1,54 @@
+<div class="home-wrapper flex-display">
+  <div class="category-list">
+    <category-list (selectCategoryEvent)="selectCategory($event)"></category-list>
+  </div>
+
+  <div class="home-info w-100">
+    <div class="products-list">
+      <div class="row product-wrapper" *ngFor="let product of productList">
+        <div class="col-12 col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+          <div class="product-img-wrapper">
+            <img src="assets/images/equipments/dumbbell_PNG.png" class="w-100" />
+          </div>
+        </div>
+        <div class="product-details col-12 col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
+          <p class="product-desc font-weight-bold">
+            {{product.ProductCategoryName? product.ProductCategoryName + ' |' : null}}
+            {{product.HeightCategory? product.HeightCategory + ' |' : null}}
+            {{product.WeightCategory? product.WeightCategory + ' |' : null}}
+            {{product.TechnologyType? product.TechnologyType + ' |' : null}}
+            {{product.MaterialType? product.MaterialType + ' |' : null}}
+            {{product.QualityCategory? product.QualityCategory : null}}
+          </p>
+
+          <div class="product-price" [ngClass]="{'sold-out' : !product.available}">
+            {{product.IsRented? 'Out of Stock' : (product.price | currency:'INR')}}
+          </div>
+
+          <ul class="rating-list flex-display">
+            <li id="{{'starId'+i}}" [ngClass]="{'selected': (star <= product.Rating)}"
+              *ngFor="let star of stars; let i= index"> ★
+              <!-- <i class="mdi mdi-star ">★</i> -->
+            </li>
+          </ul>
+
+          <div class="flex-display">
+            <button type="button" class="default-btn"
+              (click)="rentProduct(product)">{{product.IsRented? 'Notify' : 'Rent'}}</button>
+            <button type="button" *ngIf="!product.IsRented" class="default-btn add-to-kit">Add to Kit</button>
+          </div>
+
+          <!-- <div class="add-to-kit flex-display vertical-center cursor-pointer">
+            <span class="material-icons cart-icon">
+              add_shopping_cart
+            </span>
+          </div> -->
+        </div>
+
+        <span class="material-icons favorite-icon">
+          favorite_border
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

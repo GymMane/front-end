@@ -6,10 +6,10 @@
 <div mat-dialog-content>
   <form class="add-product-form">
 
-    <mat-form-field class="w-100" *ngIf="data.product.Material.length > 0">
+    <mat-form-field class="w-100" *ngIf="data.product.Material.length > 0 || data.product.Technology.length > 0">
       <mat-label>Type</mat-label>
-      <mat-select [(ngModel)]="data.ProductCategoryID" [ngModelOptions]="{standalone: true}">
-        <mat-option [value]="type.CategoryID" *ngFor="let type of data.product.Material"
+      <mat-select [(ngModel)]="data.type" [ngModelOptions]="{standalone: true}">
+        <mat-option [value]="type.CategoryID" *ngFor="let type of typeList"
           (click)="onDropDownChange(type.CategoryName, 'type')">
           {{type.CategoryName}}</mat-option>
       </mat-select>
@@ -17,7 +17,7 @@
 
     <mat-form-field class="w-100" *ngIf="data.product.Height.length > 0">
       <mat-label>Height</mat-label>
-      <mat-select [(ngModel)]="data.Height" [ngModelOptions]="{standalone: true}">
+      <mat-select [(ngModel)]="data.height" [ngModelOptions]="{standalone: true}">
         <mat-option [value]="height.CategoryID" *ngFor="let height of data.product.Height"
           (click)="onDropDownChange(height.CategoryName, 'height')">
           {{height.CategoryName}}</mat-option>
@@ -26,7 +26,7 @@
 
     <mat-form-field class="w-100" *ngIf="data.product.Weight.length > 0">
       <mat-label>Weight</mat-label>
-      <mat-select [(ngModel)]="data.Weight" [ngModelOptions]="{standalone: true}">
+      <mat-select [(ngModel)]="data.weight" [ngModelOptions]="{standalone: true}">
         <mat-option [value]="weight.CategoryID" *ngFor="let weight of data.product.Weight"
           (click)="onDropDownChange(weight.CategoryName, 'weight')">{{weight.CategoryName}}
         </mat-option>
@@ -57,5 +57,5 @@
 </div>
 <div mat-dialog-actions class="dailog-btns">
   <button mat-button [mat-dialog-close]="{event : 'close'}" class="default-btn">Close</button>
-  <button mat-button class="default-btn" (click)="addProduct()">{{action === 'add'? 'Add' : 'Save'}}</button>
+  <button mat-button class="default-btn" (click)="addProduct()">{{data.action === 'add'? 'Add' : 'Save'}}</button>
 </div>
